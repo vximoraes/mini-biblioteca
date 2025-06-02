@@ -1,4 +1,4 @@
 package src
 
-class Livro {
+class Livro() {
 }

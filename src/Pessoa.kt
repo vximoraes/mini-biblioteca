@@ -2,7 +2,7 @@ package src
 
 import java.util.UUID
 
-open class Pessoa(
+abstract class Pessoa(
     val nome: String,
     val email: String,
     val telefone: String
