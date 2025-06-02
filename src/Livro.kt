@@ -10,12 +10,19 @@ class Livro(
 
     fun verificaDisponibilidades(): Boolean{
         if(this.disponivel){
-            println("O livro ${this.titulo} está disponível.")
+            println("O livro $titulo está disponível.")
             return true
         }
         else{
-            println("O livro ${this.titulo} não está disponível.")
+            println("O livro $titulo não está disponível.")
             return false
         }
+    }
+
+    fun exibirDetalhes() {
+        println("Título: $titulo")
+        println("ISBN: $isbn")
+        println("Autor: ${autor.nome}")
+        println("Disponível: ${if (disponivel) "Sim" else "Não"}")
     }
 }
