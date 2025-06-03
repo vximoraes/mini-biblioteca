@@ -10,4 +10,13 @@ fun main() {
 
     println(autor.apresentarAutor())
     println(autor.listarLivros())
+
+
+    val emprestimo = Emprestimo(
+        dataEmprestimo = "02/03/2025",
+        dataDevolucao = null,
+        status = "Em uso"
+    )
+    emprestimo.atualizarStatus("Disponível")
+
 }
