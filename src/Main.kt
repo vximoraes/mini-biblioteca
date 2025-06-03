@@ -69,31 +69,35 @@ fun main() {
     println("Telefone: ${usuario.telefone}")
     println("\n==============================\n")
 
-    // Criando empréstimo
-    val emprestimo = Emprestimo(
-        livro = livro1,
-        usuario = usuario,
-        dataEmprestimo = "02/03/2025",
-        dataDevolucao = null,
-        status = "Em uso"
-    )
-    usuario.adicionarEmprestimo(emprestimo) // Adicionando o empréstimo ao usuário
-    println("Empréstimo criado:")
-    println("------------------------------")
-    println("Livro: ${emprestimo.livro.titulo}")
-    println("Usuário: ${emprestimo.usuario.nome}")
-    println("Data de Empréstimo: ${emprestimo.dataEmprestimo}")
-    println("Status: ${emprestimo.status}")
-    println("\n==============================\n")
+    // Verificando disponibilidade do livro antes de criar empréstimo
+    if (livro1.verificaDisponibilidades()) {
+        val emprestimo = Emprestimo(
+            livro = livro1,
+            usuario = usuario,
+            dataEmprestimo = "02/03/2025",
+            dataDevolucao = null,
+            status = "Em uso"
+        )
+        usuario.adicionarEmprestimo(emprestimo) // Adicionando o empréstimo ao usuário
+        println("Empréstimo criado:")
+        println("------------------------------")
+        println("Livro: ${emprestimo.livro.titulo}")
+        println("Usuário: ${emprestimo.usuario.nome}")
+        println("Data de Empréstimo: ${emprestimo.dataEmprestimo}")
+        println("Status: ${emprestimo.status}")
+        println("\n==============================\n")
 
-    // Atualizando status do empréstimo
-    emprestimo.atualizarStatus("Em uso")
-    println("Status do empréstimo atualizado:")
-    println("------------------------------")
-    println("Livro: ${emprestimo.livro.titulo}")
-    println("Status Atual: ${emprestimo.status}")
-    println("\n==============================\n")
+        // Atualizando status do empréstimo
+        emprestimo.atualizarStatus("Em uso")
+        println("Status do empréstimo atualizado:")
+        println("------------------------------")
+        println("Livro: ${emprestimo.livro.titulo}")
+        println("Status Atual: ${emprestimo.status}")
+        println("\n==============================\n")
 
-    // Removendo empréstimo do usuário
-    usuario.removerEmprestimo(emprestimo)
+        // Removendo empréstimo do usuário
+        usuario.removerEmprestimo(emprestimo)
+    } else {
+        println("O livro '${livro1.titulo}' não está disponível para empréstimo.")
+    }
 }
