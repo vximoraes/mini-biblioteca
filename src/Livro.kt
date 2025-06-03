@@ -7,13 +7,22 @@ class Livro(
     val autor: Autor,
     val disponivel: Boolean
 ) {
+    private val livros = mutableListOf<Livro>()
 
-    fun verificaDisponibilidades(): Boolean{
-        if(this.disponivel){
+    fun adicionarLivro(livro: Livro) {
+        livros.add(livro)
+        println("Livro '${livro.titulo}' adicionado com sucesso!")
+    }
+
+    fun listarLivrosPorAutor(autor: Autor): List<Livro> {
+        return livros.filter { it.autor == autor }
+    }
+
+    fun verificaDisponibilidades(): Boolean {
+        if (this.disponivel) {
             println("O livro $titulo está disponível.")
             return true
-        }
-        else{
+        } else {
             println("O livro $titulo não está disponível.")
             return false
         }

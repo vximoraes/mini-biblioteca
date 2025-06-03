@@ -31,6 +31,5 @@ class Emprestimo (
             println("Valor ${status} é inválido por favor digite Em uso ou disponível ")
 
         }
-
     }
 }

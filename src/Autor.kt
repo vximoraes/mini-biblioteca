@@ -13,12 +13,12 @@ class Autor(
                 "Data de Nascimento: '$dataNascimento'"
     }
 
-    fun listarLivros() {
-        val livros = Livro.livros.filter { it.autor == this }
-        if (livros.Empty()) {
+    fun listarLivros(livroManager: Livro) {
+        val livros = livroManager.listarLivrosPorAutor(this)
+        if (livros.isEmpty()) {
             println("Nenhum livro encontrado para o autor ${this.nome}.")
+        } else {
+            println("Livros do autor ${this.nome}: ${livros.joinToString { it.titulo }}")
         }
-
-        println("Livros do autor ${this.nome}: ${livros.joinToString { it.titulo }}")
     }
 }
